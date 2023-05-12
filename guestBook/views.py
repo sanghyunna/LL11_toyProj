@@ -8,17 +8,14 @@ from guestBook.models import *
 def posts(request, id):
     if request.method == "GET":
         post = get_object_or_404(Post, pk = id)
-        return_json ={
-            "postName" : post.postName,
-            "authorId" : post.authorId,
-            "authorName" : post.authorName,
-            "dateCreated" : post.created_at
-        }
 
         return JsonResponse({
             'status' : 200,
             'message' : '게시글 조회 성공',
-            'data' : return_json
+            "postName" : post.postName,
+            "dateCreated" : post.created_at,
+            "authorName" : post.authorName,
+            "authorId" : post.authorId,
         })
     elif request.method == "DELETE":
         delete_post = get_object_or_404(Post, pk=id)
@@ -30,11 +27,46 @@ def posts(request, id):
 
 def createPost(request):
     body = json.loads(request.body.decode('utf-8'))
+    try:
+        authorId = body['authorId']
+    except KeyError:
+        return JsonResponse({
+            'status' : 400,
+            'message' : 'authorIdError'
+        })
+    
+
+    try:
+        postName = body['postName']
+    except KeyError:
+        return JsonResponse({
+            'status' : 400,
+            'message' : 'postNameError'
+        })
+    
+
+    try:
+        postContent = body['postContent']
+    except KeyError:
+        return JsonResponse({
+            'status' : 400,
+            'message' : 'postContentError'
+        })
+    
+
+    try:
+        authorName = body['authorName']
+    except KeyError:
+        return JsonResponse({
+            'status' : 400,
+            'message' : 'authorNameError'
+        })
+    
     Post.objects.create(
-        postName = body['postName'],
-        postContent = body['postContent'],
-        authorId = body['authorId'],
-        authorName = body['authorName'],
+        authorId = authorId,
+        postName = postName,
+        postContent = postContent,
+        authorName = authorName,
     )
 
     return JsonResponse({
@@ -54,7 +86,7 @@ def postList(request):
             "postContent" : obj.postContent,
         })
     return JsonResponse({
-        'status' : 200,
-        'message' : 'Success',
-        'data' : res
+        "status" : 200,
+        "message" : "Success",
+        "data" : res
     })
