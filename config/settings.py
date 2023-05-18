@@ -62,11 +62,17 @@ PROJECT_APPS = [
 ]
 
 THIRD_PARTY_APPS = [
-
+    'corsheaders',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
-
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
+
+CORS_ORIGIN_WHITELIST = [
+    'http://127.0.0.1:8000',
+    'http://localhost:3000',
+]
+CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
