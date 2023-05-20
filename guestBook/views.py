@@ -79,6 +79,7 @@ def postList(request):
     res = []
     for obj in objects:
         res.append({
+            "postId" : obj.postId,
             "dateCreated" : obj.created_at,
             "authorId" : obj.authorId,
             "authorName" : obj.authorName,
