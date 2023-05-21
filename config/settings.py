@@ -68,9 +68,10 @@ THIRD_PARTY_APPS = [
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:5500',
-    'http://localhost:3000',
+    # 'http://127.0.0.1:8000',
+    # 'http://127.0.0.1:5500',
+    # 'http://localhost:3000',
+    "*",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
