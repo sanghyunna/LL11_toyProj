@@ -15,6 +15,7 @@ def posts(request, id):
             "postName" : post.postName,
             "dateCreated" : post.created_at,
             "authorName" : post.authorName,
+            "postContent" : post.postContent,
             "authorId" : post.authorId,
         })
     elif request.method == "DELETE":
