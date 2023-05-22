@@ -2,9 +2,10 @@ import json
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from guestBook.models import *
+from django.views.decorators.http import require_http_methods
 
 # Create your views here.
-# @require_http_methods(["GET", "POST", "DELETE"])
+@require_http_methods(["GET", "DELETE"])
 def posts(request, id):
     if request.method == "GET":
         post = get_object_or_404(Post, pk = id)
@@ -26,6 +27,7 @@ def posts(request, id):
             'message' : '게시글 삭제 성공'
         })
 
+@require_http_methods(["POST"])
 def createPost(request):
     body = json.loads(request.body.decode('utf-8'))
     try:
