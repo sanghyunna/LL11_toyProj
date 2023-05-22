@@ -41,8 +41,9 @@ SECRET_KEY = get_secret("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = [
+    "*",
+]
 
 # Application definition
 
@@ -68,15 +69,14 @@ THIRD_PARTY_APPS = [
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8000',
-    'http://127.0.0.1:5500',
-    'http://localhost:3000',
-    # "*",
+    # 'http://127.0.0.1:8000',
+    # 'http://127.0.0.1:5500',
+    # 'http://localhost:3000',
+    # 'https://xn--3o2b98a8e65d83j.xn--h32bi4v.xn--3e0b707e:*',
+    '*',
 ]
 
-ALLOWED_HOSTS = [
-    "*",
-]
+
 
 CORS_ALLOW_CREDENTIALS = True
 
