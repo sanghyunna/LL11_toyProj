@@ -69,11 +69,11 @@ THIRD_PARTY_APPS = [
 INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 CORS_ORIGIN_WHITELIST = [
-    # 'http://127.0.0.1:8000',
-    # 'http://127.0.0.1:5500',
-    # 'http://localhost:3000',
-    # 'https://xn--3o2b98a8e65d83j.xn--h32bi4v.xn--3e0b707e:*',
-    '*',
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:5500',
+    'http://localhost:3000',
+    'https://xn--3o2b98a8e65d83j.xn--h32bi4v.xn--3e0b707e',
+    'http://xn--3o2b98a8e65d83j.xn--h32bi4v.xn--3e0b707e',
 ]
 
 
@@ -84,7 +84,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.csrf.CsrfViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
